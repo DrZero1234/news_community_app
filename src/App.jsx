@@ -1,9 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, createBrowserRouter } from "react-router-dom";
 import handleSubmit from "./handleSubmit";
 import { useRef } from "react";
 import { Container } from "./components/styled/Container";
 import { GlobalStyle } from "./GlobalStyle";
-import { Header } from "./components/Header";
+import { Header } from "./components/Header/Header";
 
 // Site: https://preview.themeforest.net/item/upvote-social-bookmarking-wordpress-theme/full_screen_preview/15542355
 
@@ -25,15 +25,17 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Container>
-        <Header />
-        {/*  
+      <BrowserRouter>
+        <Container>
+          <Header />
+          {/*  
         <form onSubmit={submithandler}>
           <input type="text" ref={dataRef} />
           <button type="submit">Save</button>
         </form>
         */}
-      </Container>
+        </Container>
+      </BrowserRouter>
     </>
   );
 }
