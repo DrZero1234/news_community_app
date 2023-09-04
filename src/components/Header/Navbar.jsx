@@ -53,16 +53,16 @@ export const Navbar = () => {
     <StyledNavbar>
       <ul>
         <li>
-          <NavLink to="/popular">Popular</NavLink>
+          <NavLink to="/">Popular</NavLink>
         </li>
         <li>
           <NavLink to="/trending">Trending</NavLink>
         </li>
         <li>
-          <NavLink to="/recent">Recent</NavLink>
+          <NavLink to="/recent_posts">Recent</NavLink>
         </li>
         <li>
-          <NavLink to="/activeusers">Active Users</NavLink>
+          <NavLink to="/active_users">Active Users</NavLink>
         </li>
         <li>
           <NavLink to="/blog">Blog</NavLink>

@@ -20,10 +20,17 @@ export const GlobalStyle = createGlobalStyle`
 
 
         // Main Vars 
-        post-title-color: #000;
-        post-title-fs: .8125;
-        post-category-fw: 500;
-        post-category-fs: .6875;
+        --post-title-color: #000;
+        --post-title-fs: .8125;
+        --post-category-fw: 500;
+        --post-category-fs: .6875;
+
+        //Footer cars
+        --footer-background: #fafafa;
+        --footer-link-color: #777;
+        --footer-link-hover: #999;
+
+        --footer-icon-background: #909090
 
         // Global vars
         --link-hover-orange: #f66767;

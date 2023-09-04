@@ -1,17 +1,12 @@
-import { BrowserRouter, createBrowserRouter } from "react-router-dom";
 import handleSubmit from "./handleSubmit";
 import { useRef } from "react";
 import { Container } from "./components/styled/Container";
 import { GlobalStyle } from "./GlobalStyle";
 import { Header } from "./components/Header/Header";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/router";
 
 // Site: https://preview.themeforest.net/item/upvote-social-bookmarking-wordpress-theme/full_screen_preview/15542355
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-  },
-]);
 
 function App() {
   const dataRef = useRef();
@@ -25,17 +20,13 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <BrowserRouter>
-        <Container>
-          <Header />
-          {/*  
+      <RouterProvider router={router} />
+      {/*  
         <form onSubmit={submithandler}>
           <input type="text" ref={dataRef} />
           <button type="submit">Save</button>
         </form>
         */}
-        </Container>
-      </BrowserRouter>
     </>
   );
 }

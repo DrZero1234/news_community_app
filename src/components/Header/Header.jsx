@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { Navbar } from "./Navbar";
-import { ReactComponent as Logo } from "../../assets/logo.png";
+import Logo from "../../assets/logo.png";
 import { NavLink } from "react-router-dom";
 
 import { devices } from "../../helpers/devices";
@@ -42,7 +42,7 @@ export const Header = () => {
         <div className="header-left">
           <div className="logo">
             <NavLink to="/">
-              <Logo />
+              <img src={Logo} alt="Page logo" />
             </NavLink>
           </div>
           <div className="menu-icon">
