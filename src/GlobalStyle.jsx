@@ -34,6 +34,9 @@ export const GlobalStyle = createGlobalStyle`
 
         // Global vars
         --link-hover-orange: #f66767;
+        --fw-normal: 400;
+        --fw-bold: 500;
+        --fw-xbold: 600;
 
     }
     

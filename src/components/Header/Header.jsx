@@ -11,6 +11,33 @@ const StyledHeader = styled.header`
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-area: header;
+  margin-bottom: 0.5em;
+
+  .sub-header {
+    background: white;
+    border-bottom: 2px solid black;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    white-space: nowrap;
+  }
+
+  .sub-header h2 {
+    color: var(--header-blue);
+    text-transform: uppercase;
+    font-weight: var(--fw-xbold);
+  }
+
+  .sub-header h4 {
+    color: #000;
+    font-weight: var(--fw-bold);
+  }
+
+  .sub-header h4:hover {
+    color: var(--link-hover-orange);
+    cursor: pointer;
+  }
 `;
 
 const HeaderWrapper = styled.div`
@@ -55,8 +82,10 @@ export const Header = () => {
           <span>Search icon</span>
         </div>
       </HeaderWrapper>
-      <h2>Trending now</h2>
-      <h4>Sorry no trending at the moment</h4>
+      <div className="sub-header">
+        <h2>Trending now</h2>
+        <h4>Sorry no trending at the moment</h4>
+      </div>
     </StyledHeader>
   );
 };

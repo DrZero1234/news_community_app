@@ -5,7 +5,7 @@ export const Container = styled.div`
   min-height: 100vh;
   grid-template-areas:
     "header header"
-    "main side"
+    "main sidebar"
     "footer footer";
   grid-template-columns: 3fr 1fr;
   grid-template-rows: auto 1fr auto;
