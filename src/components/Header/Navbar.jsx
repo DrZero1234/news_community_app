@@ -2,6 +2,15 @@ import { styled } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { devices } from "../../helpers/devices";
+import { StyledHeaderLink } from "./styled/HeaderLink";
+
+const MOCK_HEADER_ITEMS = [
+  { url: "/", text: "popular" },
+  { url: "/trending", text: "trending" },
+  { url: "/recent_posts", text: "recent" },
+  { url: "/active_users", text: "active users" },
+  { url: "/blog", text: "blog" },
+];
 
 const StyledNavbar = styled.nav`
   position: relative;
@@ -11,16 +20,6 @@ const StyledNavbar = styled.nav`
     list-style-type: none;
     gap: 1em;
     flex-wrap: nowrap;
-  }
-
-  ul a {
-    text-decoration: none;
-    color: var(--header-list-color);
-  }
-
-  ul a:hover,
-  .active {
-    color: var(--header-list-hover);
   }
 
   @media (${devices.mobile}) {
@@ -52,21 +51,13 @@ export const Navbar = () => {
   return (
     <StyledNavbar>
       <ul>
-        <li>
-          <NavLink to="/">Popular</NavLink>
-        </li>
-        <li>
-          <NavLink to="/trending">Trending</NavLink>
-        </li>
-        <li>
-          <NavLink to="/recent_posts">Recent</NavLink>
-        </li>
-        <li>
-          <NavLink to="/active_users">Active Users</NavLink>
-        </li>
-        <li>
-          <NavLink to="/blog">Blog</NavLink>
-        </li>
+        {MOCK_HEADER_ITEMS.map((category, i) => (
+          <li key={i}>
+            <StyledHeaderLink>
+              <NavLink to={category.url}>{category.text}</NavLink>
+            </StyledHeaderLink>
+          </li>
+        ))}
       </ul>
     </StyledNavbar>
   );

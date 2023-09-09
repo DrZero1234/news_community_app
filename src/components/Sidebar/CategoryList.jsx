@@ -55,9 +55,11 @@ const StyledListItem = styled.li`
 export const CategoryList = () => {
   return (
     <StyledCategoryList>
-      {CATEGORY_MOCK.map((category) => (
+      {CATEGORY_MOCK.map((category, i) => (
         <StyledListItem>
-          <Link to="#">{category}</Link>
+          <Link to="#" key={i}>
+            {category}
+          </Link>
         </StyledListItem>
       ))}
     </StyledCategoryList>

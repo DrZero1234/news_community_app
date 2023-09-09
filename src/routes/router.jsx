@@ -7,10 +7,12 @@ import { RecentPosts } from "./RecentPosts";
 import { Blog } from "./Blog";
 import { ActiveUsers } from "./ActiveUsers";
 import { About } from "./About";
+import { Login } from "./Login";
+import { SignupOverlay } from "../pages/SignupOverlay";
+import { Register } from "./Register";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
     element: <Overlay />,
     errorElement: <ErrorPage />,
     children: [
@@ -19,26 +21,40 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <Home /> },
           {
-            path: "/trending",
+            path: "trending",
             element: <Trending />,
           },
           {
-            path: "/recent_posts",
+            path: "recent_posts",
             element: <RecentPosts />,
           },
           {
-            path: "/blog",
+            path: "blog",
             element: <Blog />,
           },
           {
-            path: "/active_users",
+            path: "active_users",
             element: <ActiveUsers />,
           },
           {
-            path: "/about",
+            path: "about",
             element: <About />,
           },
         ],
+      },
+    ],
+  },
+  {
+    element: <SignupOverlay />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },

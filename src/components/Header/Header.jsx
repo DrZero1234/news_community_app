@@ -1,9 +1,12 @@
 import { styled } from "styled-components";
 import { Navbar } from "./Navbar";
 import Logo from "../../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
+import { auth } from "../../firebase_setup/firebase";
 
 import { devices } from "../../helpers/devices";
+import { StyledHeaderLink } from "./styled/HeaderLink";
 
 // https://www.codevertiser.com/reactjs-responsive-navbar/
 
@@ -63,6 +66,8 @@ const HeaderWrapper = styled.div`
 `;
 
 export const Header = () => {
+  const { currentUser } = auth;
+  console.log(currentUser);
   return (
     <StyledHeader>
       <HeaderWrapper>
@@ -72,14 +77,20 @@ export const Header = () => {
               <img src={Logo} alt="Page logo" />
             </NavLink>
           </div>
-          <div className="menu-icon">
-            <span>hamburger</span>
-          </div>
-          <Navbar />
+          {currentUser && (
+            <>
+              <div className="menu-icon">
+                <span>hamburger</span>
+              </div>
+              <Navbar />
+            </>
+          )}
         </div>
         <div className="header-right">
-          <h2>Login</h2>
-          <span>Search icon</span>
+          <StyledHeaderLink>
+            <Link to="/login">Login</Link>
+          </StyledHeaderLink>
+          {currentUser && <span>Search icon</span>}
         </div>
       </HeaderWrapper>
       <div className="sub-header">
