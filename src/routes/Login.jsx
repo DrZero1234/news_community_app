@@ -7,13 +7,9 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { Link, useNavigate } from "react-router-dom";
+import { SignupStyledForm } from "../components/styled/Forms/SignupStyledForm";
 
 const LoginRegWrapper = styled.div``;
-
-const LoginRegForm = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -36,7 +32,7 @@ export const Login = () => {
   return (
     <SignupContainer>
       <LoginRegWrapper>
-        <LoginRegForm>
+        <SignupStyledForm>
           <label htmlFor="login-email-field">Email</label>
           <input
             type="email"
@@ -47,13 +43,23 @@ export const Login = () => {
           ></input>
           <label htmlFor="login-password-field">Password</label>
           <input
-            type="passoword"
+            type="password"
             placeholder="password"
             value={password}
             id="login-password-field"
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-        </LoginRegForm>
+          <button
+            type="submit"
+            onClick={(e) => loginWithUsernameAndPassword(e)}
+          >
+            Submit
+          </button>
+          <span>
+            Dont have an account?{" "}
+            <Link to="/register">Create one</Link>
+          </span>
+        </SignupStyledForm>
       </LoginRegWrapper>
     </SignupContainer>
   );

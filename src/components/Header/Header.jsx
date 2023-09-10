@@ -2,8 +2,10 @@ import { styled } from "styled-components";
 import { Navbar } from "./Navbar";
 import Logo from "../../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import { auth } from "../../firebase_setup/firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 import { devices } from "../../helpers/devices";
 import { StyledHeaderLink } from "./styled/HeaderLink";
@@ -67,6 +69,15 @@ const HeaderWrapper = styled.div`
 
 export const Header = () => {
   const { currentUser } = auth;
+
+  const [isSignedIn, setIsSignedIn] = useState(currentUser === null);
+
+  const initFirebaseAuth = () => {
+    onAuthStateChanged(auth, setIsSignedIn(currentUser === null));
+  };
+
+  useEffect(initFirebaseAuth);
+
   console.log(currentUser);
   return (
     <StyledHeader>
@@ -88,7 +99,11 @@ export const Header = () => {
         </div>
         <div className="header-right">
           <StyledHeaderLink>
-            <Link to="/login">Login</Link>
+            {isSignedIn ? (
+              <button onClick={() => signOut(auth)}>Sign out</button>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </StyledHeaderLink>
           {currentUser && <span>Search icon</span>}
         </div>
