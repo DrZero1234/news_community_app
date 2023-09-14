@@ -10,6 +10,7 @@ import { About } from "./About";
 import { Login } from "./Login";
 import { SignupOverlay } from "../pages/SignupOverlay";
 import { Register } from "./Register";
+import { Profile } from "./Profile";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
           {
             path: "about",
             element: <About />,
+          },
+          {
+            path: "Profile",
+            element: <Profile />,
           },
         ],
       },

@@ -25,6 +25,10 @@ export const GlobalStyle = createGlobalStyle`
         --post-category-fw: 500;
         --post-category-fs: .6875;
 
+        // Footer Vars
+
+        --form-input-bg: #f9f9f9;
+
         //Footer cars
         --footer-background: #fafafa;
         --footer-link-color: #777;

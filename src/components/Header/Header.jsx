@@ -59,6 +59,10 @@ const HeaderWrapper = styled.div`
     gap: 2em;
   }
 
+  .header-right img {
+    max-width: 50px;
+  }
+
   @media (${devices.mobile}) {
     .menu-icon {
       display: block;
@@ -67,18 +71,29 @@ const HeaderWrapper = styled.div`
   }
 `;
 
+const ProfileAvatar = styled.img`
+  height: 50px;
+  width: 50px !important;
+  vertical-align: center;
+  border-radius: 50%;
+`;
+
 export const Header = () => {
   const { currentUser } = auth;
 
-  const [isSignedIn, setIsSignedIn] = useState(currentUser === null);
+  const [isSignedIn, setIsSignedIn] = useState(currentUser != null);
 
-  const initFirebaseAuth = () => {
-    onAuthStateChanged(auth, setIsSignedIn(currentUser === null));
-  };
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsSignedIn(user);
+      } else {
+        setIsSignedIn(null);
+      }
+      console.log(currentUser);
+    });
+  }, []);
 
-  useEffect(initFirebaseAuth);
-
-  console.log(currentUser);
   return (
     <StyledHeader>
       <HeaderWrapper>
@@ -88,24 +103,36 @@ export const Header = () => {
               <img src={Logo} alt="Page logo" />
             </NavLink>
           </div>
-          {currentUser && (
-            <>
-              <div className="menu-icon">
-                <span>hamburger</span>
-              </div>
-              <Navbar />
-            </>
-          )}
+          <>
+            <div className="menu-icon">
+              <span>hamburger</span>
+            </div>
+            <Navbar />
+          </>
         </div>
         <div className="header-right">
-          <StyledHeaderLink>
-            {isSignedIn ? (
-              <button onClick={() => signOut(auth)}>Sign out</button>
-            ) : (
+          {isSignedIn ? (
+            <>
+              <StyledHeaderLink>
+                <button onClick={() => signOut(auth)}>
+                  Sign out
+                </button>
+              </StyledHeaderLink>
+              {currentUser.photoURL && (
+                <ProfileAvatar src={currentUser.photoURL} />
+              )}
+              <span>
+                Signed in as{" "}
+                {currentUser.displayName || currentUser.email}
+              </span>
+            </>
+          ) : (
+            <StyledHeaderLink>
               <Link to="/login">Login</Link>
-            )}
-          </StyledHeaderLink>
-          {currentUser && <span>Search icon</span>}
+            </StyledHeaderLink>
+          )}
+
+          <span>Search icon</span>
         </div>
       </HeaderWrapper>
       <div className="sub-header">
