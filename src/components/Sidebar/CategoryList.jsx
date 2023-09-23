@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import { SectionTitle } from "../other/SectionTitle";
 
 const CATEGORY_MOCK = [
   "politics",
@@ -54,14 +55,17 @@ const StyledListItem = styled.li`
 
 export const CategoryList = () => {
   return (
-    <StyledCategoryList>
-      {CATEGORY_MOCK.map((category, i) => (
-        <StyledListItem>
-          <Link to="#" key={i}>
-            {category}
-          </Link>
-        </StyledListItem>
-      ))}
-    </StyledCategoryList>
+    <>
+      <SectionTitle text={"story categories"} />
+      <StyledCategoryList>
+        {CATEGORY_MOCK.map((category, i) => (
+          <StyledListItem>
+            <Link to="#" key={i}>
+              {category}
+            </Link>
+          </StyledListItem>
+        ))}
+      </StyledCategoryList>
+    </>
   );
 };

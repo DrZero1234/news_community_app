@@ -17,4 +17,9 @@ const app = initializeApp(getFirebaseConfig());
 
 export const auth = getAuth(app);
 
-export const firestore = getFirestore(app);
+export const db = getFirestore(app);
+
+if (process.env.FUNCTIONS_EMULATOR) {
+  console.log("We are running emulators locally.");
+  db.collection("users").add(fkr.helpers.createCard());
+}

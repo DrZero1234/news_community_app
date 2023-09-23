@@ -20,6 +20,7 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [notice, setNotice] = useState("");
 
+  // TODO error checking
   const loginWithUsernameAndPassword = async (e) => {
     e.preventDefault();
 

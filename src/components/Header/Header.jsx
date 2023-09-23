@@ -22,10 +22,15 @@ const StyledHeader = styled.header`
     background: white;
     border-bottom: 2px solid black;
     padding: 1em;
+  }
+
+  .sub-header-content {
     display: flex;
-    align-items: center;
     gap: 1em;
+    align-items: center;
     white-space: nowrap;
+    height: 100%;
+    margin: 0 5em;
   }
 
   .sub-header h2 {
@@ -136,8 +141,10 @@ export const Header = () => {
         </div>
       </HeaderWrapper>
       <div className="sub-header">
-        <h2>Trending now</h2>
-        <h4>Sorry no trending at the moment</h4>
+        <div className="sub-header-content">
+          <h2>Trending now</h2>
+          <h4>Sorry no trending at the moment</h4>
+        </div>
       </div>
     </StyledHeader>
   );

@@ -26,6 +26,7 @@ export const Register = () => {
 
   const [notice, setNotice] = useState("");
 
+  // TODO error checking
   const registerWithUserAndPassword = async (e) => {
     e.preventDefault();
 
