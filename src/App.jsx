@@ -9,6 +9,10 @@ import { auth } from "./firebase_setup/firebase";
 
 // Site: https://preview.themeforest.net/item/upvote-social-bookmarking-wordpress-theme/full_screen_preview/15542355
 
+// Post data structure {title: string,content: "string",category: category,cover_photo: author: uid,upvotes: [users],timestamp: serverTimestamp(),comments: []}
+// Comment data structure: {content: string, author: uid, timestamp: serverTimestamp(),}
+// Blog data struncture: {}
+
 function App() {
   console.log(auth.currentUser);
   return (

@@ -40,7 +40,7 @@ export const Register = () => {
             ? ProfilePictureUrl
             : defaultProfilePicture,
         });
-        navigate("/login");
+        navigate("/");
       } catch {
         setNotice("Sorry something went wrong. Try again.");
       }
